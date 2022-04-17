@@ -1,0 +1,25 @@
+﻿Необходим пакет либо microsoft.entityframeworkcore.sqlserver 
+либо npgsql.entityframeworkcore.postgresql
+
+
+
+
+dotnet ef migrations add InitialIdentityServerPersistedGrantDbMigration -c PersistedGrantDbContext -o Data/Migrations/IdentityServer/PersistedGrantDb
+dotnet ef migrations add InitialIdentityServerConfigurationDbMigration -c ConfigurationDbContext -o Data/Migrations/IdentityServer/ConfigurationDb
+
+Add-Migration Initial -Context ApplicationDbContext -OutputDir Data/ApplicationDb
+Update-Database -Context ApplicationDbContext
+
+Add-Migration PersistedGrantDbMigration -Context PersistedGrantDbContext -OutputDir Data/PersistedGrantDb
+Update-Database -Context PersistedGrantDbContext
+
+Add-Migration ConfigurationDbMigration -Context ConfigurationDbContext -OutputDir Data/ConfigurationDb
+Update-Database -Context ConfigurationDbContext
+
+
+
+///////////////  решение ошибки при получении миграций  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+An error occurred while accessing the Microsoft.Extensions.Hosting services. Continuing without the application service provider. Error: Service type: IUserClaimsPrincipalFactory`1 not registered.
+Unable to create an object of type 'ApplicationDbContext'. For the different patterns supported at design time, see https://go.microsoft.com/fwlink/?linkid=851728
+
+https://stackoverflow.com/questions/60561851/an-error-occurred-while-accessing-the-microsoft-extensions-hosting-services-when?newreg=92b8fe7de47d44a890ab5e535498518b

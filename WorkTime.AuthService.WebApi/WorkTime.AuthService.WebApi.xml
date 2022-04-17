@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WorkTime.AuthService.WebApi</name>
+    </assembly>
+    <members>
+        <member name="M:Authorization.IdentityServer.Account.AccountController.Login(System.String)">
+            <summary>
+            Entry point into the login workflow
+            </summary>
+        </member>
+        <member name="M:Authorization.IdentityServer.Account.AccountController.Login(WorkTime.AuthService.WebApi.Account.LoginInputModel,System.String)">
+            <summary>
+            Handle postback from username/password login
+            </summary>
+        </member>
+        <member name="M:Authorization.IdentityServer.Account.AccountController.Logout(System.String)">
+            <summary>
+            Show logout page
+            </summary>
+        </member>
+        <member name="M:Authorization.IdentityServer.Account.AccountController.Logout(WorkTime.AuthService.WebApi.Account.LogoutInputModel)">
+            <summary>
+            Handle logout page postback
+            </summary>
+        </member>
+        <member name="M:WorkTime.AuthService.WebApi.Account.ExternalController.Challenge(System.String,System.String)">
+            <summary>
+            initiate roundtrip to external authentication provider
+            </summary>
+        </member>
+        <member name="M:WorkTime.AuthService.WebApi.Account.ExternalController.Callback">
+            <summary>
+            Post processing of external authentication
+            </summary>
+        </member>
+        <member name="T:WorkTime.AuthService.WebApi.AppStart.ConfigureServices.ConfigureServicesAuthentication">
+            <summary>
+            ASP.NET Core services registration and configurations
+            Authentication path
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:WorkTime.AuthService.WebApi.AppStart.ConfigureServices.ConfigureServicesAuthentication.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)" -->
+        <member name="M:WorkTime.AuthService.WebApi.AppStart.ConfigureServices.ConfigureServicesBase.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            ConfigureServices Services
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="T:WorkTime.AuthService.WebApi.AppStart.ConfigureServices.ConfigureServicesControllers">
+            <summary>
+            Configure controllers
+            </summary>
+        </member>
+        <member name="M:WorkTime.AuthService.WebApi.AppStart.ConfigureServices.ConfigureServicesControllers.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Configure services
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="T:WorkTime.AuthService.WebApi.AppStart.ConfigureServices.ConfigureServicesCors">
+            <summary>
+            Cors configurations
+            </summary>
+        </member>
+        <member name="M:WorkTime.AuthService.WebApi.AppStart.ConfigureServices.ConfigureServicesCors.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            ConfigureServices
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="T:WorkTime.AuthService.WebApi.AppStart.ConfigureServices.ConfigureServicesSwagger">
+            <summary>
+            Swagger configuration
+            </summary>
+        </member>
+        <member name="M:WorkTime.AuthService.WebApi.AppStart.ConfigureServices.ConfigureServicesSwagger.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            ConfigureServices Swagger services
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:WorkTime.AuthService.WebApi.AppStart.ConfigureServices.ConfigureServicesSwagger.SwaggerSettings(Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIOptions)">
+            <summary>
+            properties for swagger UI
+            </summary>
+            <param name="settings"></param>
+        </member>
+        <member name="T:WorkTime.AuthService.WebApi.AppStart.Configures.ConfigureCommon">
+            <summary>
+            Pipeline configuration
+            </summary>
+        </member>
+        <member name="M:WorkTime.AuthService.WebApi.AppStart.Configures.ConfigureCommon.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            Configure pipeline
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+        <member name="T:WorkTime.AuthService.WebApi.AppStart.Configures.ConfigureEndpoints">
+            <summary>
+            Configure pipeline
+            </summary>
+        </member>
+        <member name="M:WorkTime.AuthService.WebApi.AppStart.Configures.ConfigureEndpoints.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Configure Routing
+            </summary>
+            <param name="app"></param>
+        </member>
+        <member name="M:WorkTime.AuthService.WebApi.AppStart.IdentityServerConfiguration.GetClients">
+            <summary>
+            Получает указанных клиентов (настройка подключенных клиентов)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WorkTime.AuthService.WebApi.AppStart.IdentityServerConfiguration.GetApiResources">
+            <summary>
+            Получение (указание) API ресурсов которые могут взаимодействовать c 
+            сервером авторизации. Название ресурсов указываются в GetClients() =>
+            new Client => AllowedScopes
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WorkTime.AuthService.WebApi.AppStart.IdentityServerConfiguration.GetIdentityResources">
+            <summary> Запрос утверждений (Scopes) о пользователе </summary>
+        </member>
+        <member name="M:WorkTime.AuthService.WebApi.AppStart.IdentityServerConfiguration.GetApiScopes">
+            <summary>
+            IdentityServer4 version 4.x.x changes
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WorkTime.AuthService.WebApi.Extensions.IsNativeClient(IdentityServer4.Models.AuthorizationRequest)">
+            <summary>
+            Checks if the redirect URI is for a native client.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WorkTime.AuthService.WebApi.Home.HomeController.Error(System.String)">
+            <summary>
+            Shows the error page
+            </summary>
+        </member>
+        <member name="F:WorkTime.AuthService.WebApi.Infrastructure.ProfileService._claimsFactory">
+            <summary>
+            This method is called whenever claims about the user are requested (e.g. during token creation or via the userinfo endpoint)
+            </summary>
+            <param name="context">The context.</param>
+            <returns></returns>
+        </member>
+        <member name="M:WorkTime.AuthService.WebApi.Infrastructure.ProfileService.IsActiveAsync(IdentityServer4.Models.IsActiveContext)">
+            <summary>
+            This method gets called whenever identity server needs to determine if the user is valid or active (e.g. if the user's account has been deactivated since they logged in).
+            (e.g. during token issuance or validation).
+            </summary>
+            <param name="context">The context.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
