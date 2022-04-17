@@ -1,5 +1,8 @@
 ﻿Необходим пакет либо microsoft.entityframeworkcore.sqlserver 
-либо npgsql.entityframeworkcore.postgresql
+либо npgsql.entityframeworkcore.postgresql в проекте WorkTime.AuthSerice.Data 
+в зависимости от используемой базы данных
+
+Запуск миграций осуществляется из проекта 
 
 
 

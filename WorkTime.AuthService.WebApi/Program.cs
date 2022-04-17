@@ -15,6 +15,9 @@ namespace WorkTime.AuthService.WebApi
     {
         public static async Task Main(string[] args)
         {
+            // Обработка значений даты и времени для PostgreSQL (для MsSql закомментировать)
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+            
             var host = CreateHostBuilder(args).Build();
             using (var scope = host.Services.CreateScope())
             {

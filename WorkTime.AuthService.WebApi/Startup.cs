@@ -38,6 +38,9 @@ namespace WorkTime.AuthService.WebApi
         // этот метод для настройки трубопровода HTTP-запроса
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            // Обработка значений даты и времени для PostgreSQL (для MsSql закомментировать)
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+            
             ConfigureCommon.Configure(app, env);
             ConfigureEndpoints.Configure(app);
         }

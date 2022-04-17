@@ -69,6 +69,8 @@ namespace WorkTime.AuthSerice.Data.DatabaseInitialization
                 {
                     User = employee,
                     StartTime = DateTime.Now
+                    // для postgresql если не указывать формат времени в методе Startup.Configure()
+                    //StartTime = DateTime.UtcNow
                 };
                 dbContext.WorkedTimes.Add(workTimes);
                 dbContext.SaveChanges();
