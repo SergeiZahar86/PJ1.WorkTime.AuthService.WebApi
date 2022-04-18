@@ -6,10 +6,25 @@ namespace WorkTime.AuthSerice.Data.Models
 {
     public class WorkedTimes
     {
-        public Guid Id { get; set; }
+        /// <summary>
+        /// Id модели
+        /// </summary>
+        public int Id { get; set; }
+        
+        /// <summary>
+        /// Время начала
+        /// </summary>
         [Required]
         public DateTime StartTime { get; set; }
+        
+        /// <summary>
+        /// Время окончания
+        /// </summary>
         public DateTime EndTime { get; set; }
+        
+        /// <summary>
+        /// Пользователь
+        /// </summary>
         [Required]
         public AppUser User { get; set; }
     }

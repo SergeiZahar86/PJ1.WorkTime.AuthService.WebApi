@@ -7,7 +7,7 @@ using WorkTime.AuthSerice.Data.Models;
 
 namespace WorkTime.AuthSerice.Data
 {
-    public class ApplicationDbContext: IdentityDbContext<AppUser, AppRole, Guid>
+    public class ApplicationDbContext: IdentityDbContext<AppUser, AppRole, int>
     //public class ApplicationDbContext : IdentityDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
@@ -27,15 +27,15 @@ namespace WorkTime.AuthSerice.Data
             //builder.Entity<AppRole>(entity => entity.ToTable(name: "Roles"));
             builder.Entity<AppRole>(entity => entity.ToTable(name: "Roles"));
 
-            builder.Entity<IdentityUserRole<Guid>>(entity => entity.ToTable(name: "UserRoles"));
+            builder.Entity<IdentityUserRole<int>>(entity => entity.ToTable(name: "UserRoles"));
 
-            builder.Entity<IdentityUserClaim<Guid>>(entity => entity.ToTable(name: "UserClaim"));
+            builder.Entity<IdentityUserClaim<int>>(entity => entity.ToTable(name: "UserClaim"));
 
-            builder.Entity<IdentityUserLogin<Guid>>(entity => entity.ToTable("UserLogins"));
+            builder.Entity<IdentityUserLogin<int>>(entity => entity.ToTable("UserLogins"));
 
-            builder.Entity<IdentityUserToken<Guid>>(entity => entity.ToTable("UserTokens"));
+            builder.Entity<IdentityUserToken<int>>(entity => entity.ToTable("UserTokens"));
 
-            builder.Entity<IdentityRoleClaim<Guid>>(entity => entity.ToTable("RoleClaims"));
+            builder.Entity<IdentityRoleClaim<int>>(entity => entity.ToTable("RoleClaims"));
 
             builder.ApplyConfiguration(new AppUserConfiguration());
             builder.ApplyConfiguration(new WorkTimesConfiguration());
