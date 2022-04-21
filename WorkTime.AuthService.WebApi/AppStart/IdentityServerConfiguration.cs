@@ -48,12 +48,12 @@ namespace WorkTime.AuthService.WebApi.AppStart
                 RequireConsent = false,
                 RequirePkce = true,
                 AllowedGrantTypes =  GrantTypes.Code,
-                AllowedCorsOrigins = { "https://localhost:9001" },
+                AllowedCorsOrigins = { "https://localhost:10003" },
                 RedirectUris =
-                { "https://localhost:9001/callback.html",
-                    "https://localhost:9001/refresh.html"
+                { "https://localhost:10003/callback.html",
+                    "https://localhost:10003/refresh.html"
                 },
-                PostLogoutRedirectUris = { "https://localhost:9001/index.html" },
+                PostLogoutRedirectUris = { "https://localhost:10003/index.html" },
                 AllowedScopes =
                 {
                     //"OrdersAPI",

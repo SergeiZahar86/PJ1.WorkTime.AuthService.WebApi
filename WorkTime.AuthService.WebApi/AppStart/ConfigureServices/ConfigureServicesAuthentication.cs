@@ -15,10 +15,12 @@ namespace WorkTime.AuthService.WebApi.AppStart.ConfigureServices
     public static class ConfigureServicesAuthentication
     {
         /// <summary>
-        /// Настроить аутентификацию и авторизацию
+        /// Настроить аутентификацию и авторизацию.
+        /// Ссылка на документацию:
+        /// "https://identityserver4.readthedocs.io/en/latest/quickstarts/5_entityframework.html"
         /// </summary>
-        /// <param name="services"></param>
-        /// <param name="configuration"></param>
+        /// <param name="services">Коллекция сервисов</param>
+        /// <param name="configuration">Конфигурация</param>
         public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
             services.AddAuthorization();

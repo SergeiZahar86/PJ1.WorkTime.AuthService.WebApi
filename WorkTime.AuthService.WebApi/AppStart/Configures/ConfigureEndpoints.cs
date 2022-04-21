@@ -3,12 +3,12 @@
 namespace WorkTime.AuthService.WebApi.AppStart.Configures
 {
     /// <summary>
-    /// Configure pipeline
+    /// Класс для настройки источника информации
     /// </summary>
     public static class ConfigureEndpoints
     {
         /// <summary>
-        /// Configure Routing
+        /// Настроить маршрутизацию, Cors, и т.д.
         /// </summary>
         /// <param name="app"></param>
         public static void Configure(IApplicationBuilder app)
