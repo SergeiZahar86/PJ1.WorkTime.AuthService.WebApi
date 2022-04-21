@@ -6,15 +6,19 @@ using static IdentityServer4.IdentityServerConstants;
 
 namespace WorkTime.AuthService.WebApi.AppStart
 {
+    /// <summary>
+    /// Класс устанавливает конфигурацию IdentityServer
+    /// </summary>
     public static class IdentityServerConfiguration
     {
         /// <summary>
-        /// Получает указанных клиентов (настройка подключенных клиентов)
+        /// Добавляет список клиентов (настройка подключенных клиентов)
         /// </summary>
         /// <returns></returns>
         public static IEnumerable<Client> GetClients() =>
         new List<Client>
         {
+            /*
             new Client
             {
                 ClientId = "client_blazor_web_assembly",
@@ -34,9 +38,12 @@ namespace WorkTime.AuthService.WebApi.AppStart
                     StandardScopes.Profile
                 }
             },
+            */
+            
+            // Фронтэнд клиент
             new Client
             {
-                ClientId = "client_id_js",
+                ClientId = "client_js",
                 RequireClientSecret = false,
                 RequireConsent = false,
                 RequirePkce = true,
@@ -55,9 +62,11 @@ namespace WorkTime.AuthService.WebApi.AppStart
                     StandardScopes.Profile
                 }
             },
+            
+            // Клиент с бизнес логикой
             new Client
             {
-                ClientId = "client_id_swagger",
+                ClientId = "client_business",
                 ClientSecrets = { new Secret("client_secret_swagger".ToSha256()) },
                 AllowedGrantTypes =  GrantTypes.ResourceOwnerPassword,
                 AllowedCorsOrigins = { "https://localhost:7001" },
@@ -70,7 +79,9 @@ namespace WorkTime.AuthService.WebApi.AppStart
                 },
                 AlwaysIncludeUserClaimsInIdToken = true,
                 UpdateAccessTokenClaimsOnRefresh = true
-            },
+            }
+            
+            /*
             new Client
             {
                 // имя клиента
@@ -89,6 +100,7 @@ namespace WorkTime.AuthService.WebApi.AppStart
             new Client
             {
                 ClientId = "client_id_mvc",
+                //Секреты клиента - соответствующие только для потоков, которые требуют секрета
                 ClientSecrets = { new Secret("client_secret_mvc".ToSha256()) },
                 // указание типа авторизации
                 AllowedGrantTypes = GrantTypes.Code,
@@ -120,6 +132,7 @@ namespace WorkTime.AuthService.WebApi.AppStart
                 // в IdToken мы включаем из userinfo
                 // AlwaysIncludeUserClaimsInIdToken = true
             }
+        */
         };
 
         /// <summary>

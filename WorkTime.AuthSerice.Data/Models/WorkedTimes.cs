@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WorkTime.AuthSerice.Data.Models
 {
+    /// <summary>
+    /// Отработанное время
+    /// </summary>
     public class WorkedTimes
     {
         /// <summary>

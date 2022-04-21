@@ -3,14 +3,14 @@
 namespace WorkTime.AuthService.WebApi.AppStart.ConfigureServices
 {
     /// <summary>
-    /// Configure controllers
+    /// Класс устанавливающий конфигурацию контроллеров
     /// </summary>
     public static class ConfigureServicesControllers
     {
         /// <summary>
-        /// Configure services
+        /// Конфигурация контроллеров
         /// </summary>
-        /// <param name="services"></param>
+        /// <param name="services">Коллекция сервисов</param>
         public static void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();

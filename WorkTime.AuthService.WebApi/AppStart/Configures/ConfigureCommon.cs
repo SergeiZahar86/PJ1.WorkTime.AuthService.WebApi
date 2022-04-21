@@ -7,12 +7,12 @@ using WorkTime.AuthService.WebApi.AppStart.ConfigureServices;
 namespace WorkTime.AuthService.WebApi.AppStart.Configures
 {
     /// <summary>
-    /// Pipeline configuration
+    /// Класс с общими настройками
     /// </summary>
     public static class ConfigureCommon
     {
         /// <summary>
-        /// Configure pipeline
+        /// Задает общие настройки
         /// </summary>
         /// <param name="app"></param>
         /// <param name="env"></param>
@@ -22,8 +22,17 @@ namespace WorkTime.AuthService.WebApi.AppStart.Configures
             {
                 app.UseDeveloperExceptionPage();
             }
+            
+            //Зарегистрируйте промежуточное программное обеспечение Swagger с
+            //дополнительным действием настроек для параметров Di-Injected
             //app.UseSwagger();
+            
+            //Зарегистрируйте промежуточное программное обеспечение SwaggerUi с
+            //дополнительным действием настроек для параметров Di-Injected
             //app.UseSwaggerUI(ConfigureServicesSwagger.SwaggerSettings);
+            
+            //Добавляет промежуточное программное обеспечение для перенаправления
+            //HTTP-запросов к HTTPS.
             //app.UseHttpsRedirection();
         }
     }

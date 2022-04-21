@@ -7,8 +7,10 @@ using WorkTime.AuthSerice.Data.Models;
 
 namespace WorkTime.AuthSerice.Data
 {
+    /// <summary>
+    /// Контекст базы данных
+    /// </summary>
     public class ApplicationDbContext: IdentityDbContext<AppUser, AppRole, int>
-    //public class ApplicationDbContext : IdentityDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
@@ -16,8 +18,20 @@ namespace WorkTime.AuthSerice.Data
 
         }
 
+        /// <summary> 
+        /// Набор сущностей  WorkedTimes
+        /// </summary>
         public DbSet<WorkedTimes> WorkedTimes { get; set; }
+        
+        /// <summary>
+        /// Набор сущностей  AppUser
+        /// </summary>
+        public DbSet<AppUser> AppUsers { get; set; }
 
+        /// <summary>
+        /// Настраивает схему, необходимую для структуры идентификации.
+        /// </summary>
+        /// <param name="builder"></param>
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

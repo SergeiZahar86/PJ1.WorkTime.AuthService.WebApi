@@ -8,9 +8,18 @@ using WorkTime.AuthSerice.Data.Models;
 
 namespace WorkTime.AuthSerice.Data.Configuration
 {
+    /// <summary>
+    /// Позволяет  настроить тип сущности
+    /// в отдельном классе, а не в режиме онлайн в OnModelCreating (ModelBuilder).
+    /// </summary>
     public class WorkTimesConfiguration : IEntityTypeConfiguration<WorkedTimes>
     {
-        public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WorkedTimes> builder)
+        /// <summary>
+        /// Настраивает сущность типа WorkedTimes.
+        /// </summary>
+        /// <param name="builder"></param>
+        public void Configure(
+            Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WorkedTimes> builder)
         {
             builder.HasKey(x => x.Id);
         }

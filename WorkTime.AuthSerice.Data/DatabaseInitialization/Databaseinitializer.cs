@@ -1,7 +1,5 @@
 using System;
-using System.Security.Claims;
 using System.Threading.Tasks;
-using IdentityModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using WorkTime.AuthSerice.Data.Models;
@@ -36,13 +34,11 @@ namespace WorkTime.AuthSerice.Data.DatabaseInitialization
             string employeeName = "empl";
             if (await roleManager.FindByNameAsync("Administrator") == null)
             {
-                //await roleManager.CreateAsync(new IdentityRole("Administrator"));
                 await roleManager.CreateAsync(new AppRole { Name = "Administrator" });
 
             }
             if (await roleManager.FindByNameAsync("Employee") == null)
             {
-                //await roleManager.CreateAsync(new IdentityRole("Employee"));
                 await roleManager.CreateAsync(new AppRole { Name = "Employee" });
             }
             if (await userManager.FindByNameAsync(adminName) == null)

@@ -3,14 +3,14 @@
 namespace WorkTime.AuthService.WebApi.AppStart.ConfigureServices
 {
     /// <summary>
-    /// Cors configurations
+    /// Класс устанавливающий CORS конфигурацию
     /// </summary>
     public class ConfigureServicesCors
     {
         /// <summary>
-        /// ConfigureServices
+        /// Устанавливает CORS конфигурацию
         /// </summary>
-        /// <param name="services"></param>
+        /// <param name="services">Коллекция сервисов</param>
         public static void ConfigureServices(IServiceCollection services)
         {
             services.AddCors(options =>
