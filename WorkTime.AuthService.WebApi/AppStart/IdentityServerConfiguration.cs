@@ -155,7 +155,11 @@ namespace WorkTime.AuthService.WebApi.AppStart
             };
         }
 
-        /// <summary> Запрос утверждений (Scopes) о пользователе </summary>
+        /// <summary>
+        /// Запрос утверждений (Scopes) о пользователе.
+        /// Ссылка на документацию:
+        /// "https://identityserver4.readthedocs.io/en/latest/quickstarts/2_interactive_aspnetcore.html#:~:text=not%20registered%20yet.-,Adding%20support%20for%20OpenID%20Connect%20Identity%20Scopes,-Similar%20to%20OAuth"
+        /// </summary>
         public static IEnumerable<IdentityResource> GetIdentityResources()
         {
             // сообщает провайдеру о необходимости возврата утверждения sub (идентификатора

@@ -1,10 +1,6 @@
-﻿using IdentityServer4.AspNetIdentity;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WorkTime.AuthSerice.Data.Models;
-using WorkTime.AuthService.WebApi.AppStart;
 using WorkTime.AuthService.WebApi.Infrastructure;
 
 namespace WorkTime.AuthService.WebApi.AppStart.ConfigureServices
