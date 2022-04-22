@@ -1,5 +1,4 @@
 using System;
-using Authorization.IdentityServer.Account;
 using IdentityServer4.Models;
 using Microsoft.AspNetCore.Mvc;
 using WorkTime.AuthService.WebApi.Account;
@@ -9,7 +8,7 @@ namespace WorkTime.AuthService.WebApi
     public static class Extensions
     {
         /// <summary>
-        /// Проверяет, если URI Redirect для нового клиента.
+        /// Checks if the redirect URI is for a native client.
         /// </summary>
         /// <returns></returns>
         public static bool IsNativeClient(this AuthorizationRequest context)
@@ -22,7 +21,7 @@ namespace WorkTime.AuthService.WebApi
         {
             controller.HttpContext.Response.StatusCode = 200;
             controller.HttpContext.Response.Headers["Location"] = "";
-
+            
             return controller.View(viewName, new RedirectViewModel { RedirectUrl = redirectUri });
         }
     }

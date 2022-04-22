@@ -16,10 +16,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WorkTime.AuthSerice.Data.Models;
-using WorkTime.AuthService.WebApi;
-using WorkTime.AuthService.WebApi.Account;
 
-namespace Authorization.IdentityServer.Account
+namespace WorkTime.AuthService.WebApi.Account
 {
     [SecurityHeaders]
     [AllowAnonymous]
