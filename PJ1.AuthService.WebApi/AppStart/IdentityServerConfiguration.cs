@@ -12,53 +12,51 @@ namespace PJ1.AuthService.WebApi.AppStart
     public static class IdentityServerConfiguration
     {
         /// <summary>
+        /// URL клиента
+        /// </summary>
+        private static string spaClientUrl = "https://localhost:10003";
+
+        /// <summary>
         /// Добавляет список клиентов (настройка подключенных клиентов)
         /// </summary>
         /// <returns></returns>
         public static IEnumerable<Client> GetClients() =>
             new List<Client>
             {
-                /*
-                new Client
-                {
-                    ClientId = "client_blazor_web_assembly",
-                    RequireClientSecret = false,
-                    RequireConsent = false,
-                    RequirePkce = true,
-                    // указание типа авторизации
-                    AllowedGrantTypes =  GrantTypes.Code,
-                    AllowedCorsOrigins = { "https://localhost:8001" },
-                    PostLogoutRedirectUris = { "https://localhost:8001" },
-                    RedirectUris = { "https://localhost:8001/authentication/login-callback" },
-                    AllowedScopes =
-                    {
-                        "blazor",
-                        "OrdersAPI",
-                        StandardScopes.OpenId,
-                        StandardScopes.Profile
-                    }
-                },
-                */
-
                 // Фронтэнд клиент
                 new Client
                 {
-                    ClientId = "client_js",
+                    ClientId = "client_angular",
+                    ClientName = "SPA by Angular Code Client",
+                    AccessTokenType = AccessTokenType.Jwt,
+                    //RequireConsent = false,
+                    AccessTokenLifetime = 330, // 330 seconds, default 60 minutes
+                    IdentityTokenLifetime = 300,
                     RequireClientSecret = false,
-                    RequireConsent = false,
-                    RequirePkce = true,
                     AllowedGrantTypes = GrantTypes.Code,
-                    AllowedCorsOrigins = {"https://localhost:10003"},
-                    // RedirectUris =
-                    // {
-                    //     "http://localhost:10003/callback.html",
-                    //     "http://localhost:10003/signout-callback.html"
-                    // },
+                    RequirePkce = true,
+                    AllowAccessTokensViaBrowser = true,
+                    AllowedCorsOrigins =
+                    {
+                        $"{spaClientUrl}",
+                        "https://localhost:4200"
+                    },
                     RedirectUris =
                     {
-                        "https://localhost:10003/counter"
+                        $"{spaClientUrl}/callback",
+                        $"{spaClientUrl}/counter",
+                        $"{spaClientUrl}/silent-renew.html",
+                        "https://localhost:4200",
+                        "https://localhost:4200/silent-renew.html"
                     },
-                    PostLogoutRedirectUris = {"https://localhost:10003/counter"},
+                    PostLogoutRedirectUris =
+                    {
+                        $"{spaClientUrl}/counter",
+                        $"{spaClientUrl}/unauthorized",
+                        $"{spaClientUrl}",
+                        "https://localhost:4200/unauthorized",
+                        "https://localhost:4200"
+                    },
                     AllowedScopes =
                     {
                         //"OrdersAPI",
@@ -85,59 +83,6 @@ namespace PJ1.AuthService.WebApi.AppStart
                     AlwaysIncludeUserClaimsInIdToken = true,
                     UpdateAccessTokenClaimsOnRefresh = true
                 }
-
-                /*
-                new Client
-                {
-                    // имя клиента
-                    ClientId = "client_id",
-                    ClientSecrets = { new Secret("client_secret".ToSha256()) },
-                    // указание типа авторизации
-                    AllowedGrantTypes = GrantTypes.ClientCredentials,
-                    // список scopes, разрешённых именно для данного клиентского приложения
-                    AllowedScopes =
-                    {
-                        "OrdersAPI",
-                        StandardScopes.OpenId,
-                        StandardScopes.Profile
-                    }
-                },
-                new Client
-                {
-                    ClientId = "client_id_mvc",
-                    //Секреты клиента - соответствующие только для потоков, которые требуют секрета
-                    ClientSecrets = { new Secret("client_secret_mvc".ToSha256()) },
-                    // указание типа авторизации
-                    AllowedGrantTypes = GrantTypes.Code,
-                    // список scopes, разрешённых именно для данного клиентского приложения
-                    AllowedScopes =
-                    {
-                        // возможность обращаться к OrdersAPI
-                        "OrdersAPI",
-                        StandardScopes.OpenId,
-                        StandardScopes.Profile
-                    },
-    
-                    // указание того что с этого адреса будет перенаправление 
-                    // на контроллер авторизации сервера авторизации при попытке
-                    // достучаться на защищенные маршруты
-                    RedirectUris = {"https://localhost:2001/signin-oidc"},
-    
-                    PostLogoutRedirectUris = {"https://localhost:2001/signout-callback-oidc"},
-    
-                    // вывод информационной страницы после аутентификации
-                    RequireConsent = false,
-    
-                    // установка жизни Access Token (секунды)
-                    AccessTokenLifetime = 5,
-    
-                    // для работы Refresh Token
-                    AllowOfflineAccess = true
-    
-                    // в IdToken мы включаем из userinfo
-                    // AlwaysIncludeUserClaimsInIdToken = true
-                }
-            */
             };
 
         /// <summary>
@@ -148,16 +93,16 @@ namespace PJ1.AuthService.WebApi.AppStart
         /// <returns></returns>
         public static IEnumerable<ApiResource> GetApiResources()
         {
-            //yield return new ApiResource("SwaggerAPI");
-            //yield return new ApiResource("OrdersAPI");
-            //yield return new ApiResource("roles", "My Roles", new[] { "role", "name" });
-            return new List<ApiResource>
+            var list = new List<ApiResource>();
+            //list.Add(new ApiResource("SwaggerAPI", "API Application"));
+            list.Add(new ApiResource("SwaggerAPI", "API Application")
             {
-                new ApiResource("SwaggerAPI"),
-                new ApiResource("OrdersAPI"),
-                //new ApiResource("roles", "My Roles", new[] { "role", "name" }),
-                //new ApiResource(LocalApi.ScopeName, "Local Api", new [] { JwtClaimTypes.Role }),
-            };
+                Scopes = {"SwaggerAPI"}
+            });
+            //new ApiResource("OrdersAPI"),
+            //new ApiResource("roles", "My Roles", new[] { "role", "name" }),
+            //new ApiResource(LocalApi.ScopeName, "Local Api", new [] { JwtClaimTypes.Role }),
+            return list;
         }
 
         /// <summary>
@@ -167,18 +112,14 @@ namespace PJ1.AuthService.WebApi.AppStart
         /// </summary>
         public static IEnumerable<IdentityResource> GetIdentityResources()
         {
-            // сообщает провайдеру о необходимости возврата утверждения sub (идентификатора
-            // субъекта) в токене идентификации.
-            yield return new IdentityResources.OpenId();
-
-            // представляет отображаемое имя, адрес электронной почты и утверждение веб-сайта и тд.
-            yield return new IdentityResources.Profile();
-            //yield return new IdentityResource
-            //{
-            //    Name = "roles",
-            //    DisplayName = "Roles",
-            //    UserClaims = { JwtClaimTypes.Role }
-            //};
+            return new List<IdentityResource>
+            {
+                // сообщает провайдеру о необходимости возврата утверждения sub (идентификатора
+                // субъекта) в токене идентификации.
+                new IdentityResources.OpenId(),
+                // представляет отображаемое имя, адрес электронной почты и утверждение веб-сайта и тд.
+                new IdentityResources.Profile(),
+            };
         }
 
         /// <summary>
@@ -187,9 +128,10 @@ namespace PJ1.AuthService.WebApi.AppStart
         /// <returns></returns>
         public static IEnumerable<ApiScope> GetApiScopes()
         {
-            yield return new ApiScope("SwaggerAPI", "Swagger API");
-            yield return new ApiScope("blazor", "Blazor WebAssembly");
-            yield return new ApiScope("OrdersAPI", "Orders API");
+            return new List<ApiScope>
+            {
+                new ApiScope("SwaggerAPI", "Swagger API")
+            };
         }
     }
 }

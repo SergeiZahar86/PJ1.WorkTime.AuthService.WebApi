@@ -27,12 +27,12 @@ namespace PJ1.AuthService.WebApi.AppStart.ConfigureServices
                 .AddAspNetIdentity<AppUser>()
                 //Добавляет клиентов
                 .AddInMemoryClients(IdentityServerConfiguration.GetClients())
-                //Добавляет ресурсы 
-                .AddInMemoryApiResources(IdentityServerConfiguration.GetApiResources())
                 //Добавляет ресурсы индивидуальности
                 .AddInMemoryIdentityResources(IdentityServerConfiguration.GetIdentityResources())
                 //Добавляет scopes.
                 .AddInMemoryApiScopes(IdentityServerConfiguration.GetApiScopes())
+                //Добавляет ресурсы 
+                .AddInMemoryApiResources(IdentityServerConfiguration.GetApiResources())
                 //Добавляет службу профиля.
                 .AddProfileService<ProfileService>()
                 //Устанавливает временные учетные данные.
