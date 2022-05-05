@@ -30,8 +30,8 @@ namespace PJ1.AuthService.WebApi.AppStart
                     ClientName = "SPA by Angular Code Client",
                     AccessTokenType = AccessTokenType.Jwt,
                     //RequireConsent = false,
-                    AccessTokenLifetime = 330, // 330 seconds, default 60 minutes
-                    IdentityTokenLifetime = 300,
+                    AccessTokenLifetime = 20, // 330 seconds, default 60 minutes
+                    IdentityTokenLifetime = 20,
                     RequireClientSecret = false,
                     AllowedGrantTypes = GrantTypes.Code,
                     RequirePkce = true,
@@ -43,15 +43,18 @@ namespace PJ1.AuthService.WebApi.AppStart
                     },
                     RedirectUris =
                     {
-                        $"{spaClientUrl}/callback",
                         $"{spaClientUrl}/counter",
+                        $"{spaClientUrl}/fetch-data",
                         $"{spaClientUrl}/silent-renew.html",
+                        $"{spaClientUrl}/silent-refresh.html",
                         "https://localhost:4200",
-                        "https://localhost:4200/silent-renew.html"
+                        "https://localhost:4200/silent-renew.html",
+                        "https://localhost:4200/silent-refresh.html",
                     },
                     PostLogoutRedirectUris =
                     {
                         $"{spaClientUrl}/counter",
+                        $"{spaClientUrl}/fetch-data",
                         $"{spaClientUrl}/unauthorized",
                         $"{spaClientUrl}",
                         "https://localhost:4200/unauthorized",
